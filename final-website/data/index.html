@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <title>New York Map</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <style type="text/css">
+        input[type="range"] {
+            position: relative;
+        }
+        input[type="range"]:after,
+        input[type="range"]:before {
+            position: absolute;
+            top: 1em;
+            color: #aaa;
+        }
+        input[type="range"]:before {
+            left:0em;
+            content: attr(min);
+        }
+        input[type="range"]:after {
+            right: 0em;
+            content: attr(max);
+        }
+        .legendTitle {
+	        text-anchor: middle;
+	        font-size: 1.5rem;
+            font-variant: small-caps;
+	        fill: #4F4F4F;
+	        font-weight: 300;
+	    }
+
+	  	.axis path,
+	  	.axis tick,
+	    .axis line {
+	  		fill: none;
+	  		stroke: none;
+	  	}
+    </style>
+    <body>
+        <h1>New York City</h1>
+        <label>Month for data:</label><input type="range" id="monthofYear" min='1' max='12' value='1'></input><br>
+        <label>Data type: </label><select id="dataSelector"></select>
+        <div id='v_map'></div>
+    </body>
+    <script src='d3.min.js'></script>
+    <script src='map.js'></script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <title>K MEANS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <style type="text/css">
+        svg path {
+            fill: steelblue;
+        }
+        #controls button {
+                background-color: #0275d8;
+                border: none;
+                color: white;
+                padding: 10px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 20px;
+                margin: 4px 2px;
+                cursor: pointer
+                }
+        #controls button:active {
+                background-color: #DCDCDC;
+        }
+        #controls button:focus {
+                background-color: #DCDCDC;
+        }
+    </style>
+    <body>
+        <section class='container'>
+            <h1>K-means: Visualizing geodata</h1>
+            <h3>Noise complaints clusters as calculated by K-means</h3>
+            <p>The following graph shows the distribution of the different noise complaints around NY City. You can change the values of the cluster centers by clicking on the buttons.</p>
+
+            <h5>Used Data</h5>
+            <p>To make this visualization we used a JSON file generated with Python. You can see how it was done here:</p>
+            <a href="https://github.com/unaivillanueva/Social-Data-Assignment-2.github.io/blob/master/Create%20KNN%20Data.ipynb">Python code to obtain the data</a>
+            <h5>Visualization: Noise complaints clusters as calculated by K-means</h5>
+             <div id='controls'>
+                <button class='btn btn-primary' data-val='2'>k = 2</button>
+                <button class='btn btn-primary' data-val='3'>k = 3</button>
+                <button class='btn btn-primary' data-val='4'>k = 4</button>
+                <button class='btn btn-primary' data-val='5'>k = 5</button>
+                <button class='btn btn-primary' data-val='6'>k = 6</button>
+            </div>
+            <div id='v_map3'></div>           
+        </section>
+    </body>
+    <script src='d3.min.js'></script>
+    <script src='noise_zip.js'></script>
+</html>

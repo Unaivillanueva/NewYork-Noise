@@ -1,0 +1,30 @@
+.axis .domain {
+  display: none;
+}
+.myButton {
+  background-color:#ffa02b;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  border:1px solid #ffffff;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Trebuchet MS;
+  font-size:17px;
+  padding:16px 31px;
+  text-decoration:none;
+}
+.myButton:hover {
+  background-color:#BDBDBD;
+  border-color:#BDBDBD;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+  background-color:#BDBDBD;
+  border-color:#ffffff;
+}
+#button8020{
+  background-color:#BDBDBD;
+}

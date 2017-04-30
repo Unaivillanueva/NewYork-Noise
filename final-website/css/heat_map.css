@@ -1,0 +1,21 @@
+#cf {
+  position:relative;
+  height:500px;
+  width:800px;
+  margin:0 auto;
+}
+
+#cf img {
+  height:500px;
+  width:800px;
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+#cf img.bottom:hover {
+  opacity:0;
+}

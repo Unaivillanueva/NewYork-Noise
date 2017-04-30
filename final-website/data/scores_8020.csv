@@ -1,0 +1,4 @@
+method,Date-Time-StreetName,Date-Time-ZIPCode,Date-StreetName,StreetName
+Decision Tree,0.3555,0.3315,0.3459,0.5188
+Random Forest,0.4445,0.4624,0.3339,0.5195
+K Neighbors,0.4288,0.4657,0.3289,0.5158
