@@ -3,7 +3,7 @@ Vehicle,1
 Loud Music/Daytime,6
 Loud Music/Nighttime,6
 Other Noise Sources,22
-Boat(Engine,Music,Etc),142
+Boat(Engine/Music/etc.),142
 Other Animals,265
 Lawn care equipment,626
 Manufacturing Noise,716

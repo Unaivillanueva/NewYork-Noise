@@ -17,6 +17,7 @@
 
     <!-- Theme CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="css/graphs.css" rel="stylesheet">
     <link href="css/map.css" rel="stylesheet">
     <link href="css/k_neig.css" rel="stylesheet">
     <link href="css/scores.css" rel="stylesheet">
@@ -113,22 +114,16 @@
                      <h2 class="section-heading" id="understanting">Understanding the data</h2>
                      <p>Let's start by visualizing some of the basic stats of our data.</p>
                      <h3>Why do people complain?</h3>
-                     <p>Graph with most common types</p>
-                     <p>Graph with zones with most complaints</p>
-                     <p>Graph with complaints by time of the day</p>
-                     <p>Graph with complaints by month of the year</p>
-                     <p>Other?</p>
+                     <div id="v_types_complaints"></div>
+                     <div id="v_zones_complaints"></div>
+                     <div id="v_time_complaints"></div>
+                     <div id="v_month_complaints"></div>
+
                      <p>However, all of these numbers might seem a bit abstract, since they don't provide any context regarding where they hapened and their surroundings.</p>
 
                     <h3>Mapping the data</h3>
-                    <p>Things I'd add to the map:</p>
-                    <li>Map of NY in the background</li>
-                    <li>Ability to zoom in/out of the map</li>
-                    <li>Detailer info on mousover of the zone: Type of noise, name of the zone (or zip code), number of complaints</li>
-
                     <label>Month for data: <span id="monthName">January</span></label><input type="range" id="monthofYear" min='1' max='12' value='1'></input><br>
                     <label>Data type: </label><select id="dataSelector"></select>
-                    <!--<img id='v_map_bg' src='img/new-york-bg.svg'></img>-->
                     <div id='v_map' style="margin-left: 150px; margin-top: 50px;"></div>
 
                     <h3>Curious cases</h3>
@@ -215,6 +210,7 @@
     <script src='data/d3.min.js'></script>
     <script src='data/d3-tip.js'></script>
     <script src='data/d3-legend.min.js'></script>
+    <script src='data/explanatory_graphs.js'></script>
     <script src="data/map.js"></script>
     <script src="data/noise_zip.js"></script>
     <script src="data/scores.js"></script>
