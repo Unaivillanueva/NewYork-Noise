@@ -6,8 +6,8 @@ const svg1 = d3.select('#v_map3').append("svg")
                 .attr("height", h);
 
 
-d3.json('K_Means/zip_codes.geojson', geodata => {
-d3.json('K_Means/kmeans.json', data => {
+d3.json('data/zip_codes.geojson', geodata => {
+d3.json('data/kmeans.json', data => {
     let projection = d3.geoMercator()
                        .center([-73.955242, 40.730610])
                        .scale(80000)

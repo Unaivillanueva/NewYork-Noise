@@ -1,9 +1,0 @@
-{"8020": {"DT":{"DateTimeStr": 0.3555, "DateTimeZip": 0.3315, "DateStr": 0.3459, "Str": 0.5188},
-          "RF":{"DateTimeStr": 0.4445, "DateTimeZip": 0.4624, "DateStr": 0.3339, "Str": 0.5195},
-          "KNei":{"DateTimeStr": 0.4288, "DateTimeZip": 0.4657, "DateStr": 0.3289, "Str": 0.5158}},
- "9010": {"DT":{"DateTimeStr": 0.3705, "DateTimeZip": 0.3712, "DateStr": 0.4033, "Str": 0.5239},
-          "RF":{"DateTimeStr": 0.4494, "DateTimeZip": 0.4725, "DateStr": 0.3693, "Str": 0.5219},
-          "KNei":{"DateTimeStr": 0.4233, "DateTimeZip": 0.4685, "DateStr":0.3636, "Str": 0.5239}},
- "9505": {"DT":{"DateTimeStr": 0.3774, "DateTimeZip": 0.3663, "DateStr": 0.4499, "Str": 0.5486},
-          "RF":{"DateTimeStr": 0.4820, "DateTimeZip": 0.4765, "DateStr": 0.4022, "Str": 0.5448},
-          "KNei":{"DateTimeStr": 0.4464, "DateTimeZip": 0.4734, "DateStr": 0.4012, "Str": 0.5479}}}

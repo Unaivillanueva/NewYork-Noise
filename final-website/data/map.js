@@ -84,8 +84,11 @@ d3.json('data/incidents_per_zip.json', data_per_zip => {
         featureElement = g.selectAll("path")
            .data(geomap_zip_data)
            .attr('fill', d => scale(counts[d.properties.postalCode] || 0))
+           .attr('style', 'pointer-events: visible')
            .on('mouseover', function(d, i) {
+               console.log(d);
                d3.select(this).attr('fill', d => scaleHover(counts[d.properties.postalCode] || 0));
+               
                tip.show({
                    zip: d.properties.postalCode,
                    data: counts[d.properties.postalCode] || 0
@@ -129,6 +132,6 @@ d3.json('data/incidents_per_zip.json', data_per_zip => {
 
     updateMap();
     update();
-    svg.call(tip);
+    g.call(tip);
 });
 });
