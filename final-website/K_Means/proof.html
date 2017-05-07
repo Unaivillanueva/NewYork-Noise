@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Proof</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+   integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+   crossorigin=""/>
+   <link rel="stylesheet" href="proof.css"/>
+   <link href='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+
+ <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+   integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+   crossorigin=""></script>
+   <script type="text/javascript" src="d3.min.js"></script>
+   <script src="L.SvgScaleOverlay.js"></script>
+ 
+
+</head>
+<body>
+ <div id='controls'>
+                        <button data-val='2'>k = 2</button>
+                        <button data-val='3'>k = 3</button>
+                        <button data-val='4'>k = 4</button>
+                        <button data-val='5'>k = 5</button>
+                        <button data-val='6'>k = 6</button>
+                    </div>
+	<div id='map3' ></div>
+
+</body>
+
+ <script type="text/javascript">
+
+
+   	var map3 = L.map('map3').setView([ 40.730610,-73.955242], 10);
+
+   	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map3);
+
+   	var svg1 = d3.select(map3.getPanes().overlayPane).append("svg"),
+    g1 = svg1.append("g").attr("class", "leaflet-zoom-hide");
+
+function projectPoint(x, y) {
+		  var point = map3.latLngToLayerPoint(new L.LatLng(y, x));
+		  this.stream.point(point.x, point.y);
+		}
+
+		var projection = d3.geoTransform({point: projectPoint});
+		
+
+    	var path1 = d3.geoPath(projection);
+
+    	k_means_param=2;
+
+d3.json('zip_codes.geojson', geodata => {
+d3.json('kmeans.json', data => {
+
+    var feature=g1.selectAll("path")
+       .data(geodata.features)
+       .enter()
+       .append("path")
+       .attr("d", path1);
+
+	feature.attr("d", path1);
+
+    const colors = ['thistle', 'violet', 'fuchsia', 'mediumorchid', 'rebeccapurple','slateblue'];
+    const colors_centers = ['MediumOrchid', 'Fuchsia ', 'Purple  ', 'DarkViolet ', 'Indigo','DarkSlateBlue '];
+
+
+
+    var circles;
+    var centers;  
+    var centers1;  
+    var svgOverlay = L.SvgScaleOverlay();
+   	var radius_cir=3;
+   	var radius_cen=20;
+
+	svgOverlay.onInitData = function () {
+	if(!circles && !centers && !centers1)
+	{
+		var g1 = d3.select(this._g);
+		circles=g1.selectAll("circle")
+       .data(data.data)
+       .enter()
+       .append("circle")
+       .style("fill", d => colors[d[k_means_param]])
+       .style("opacity", 0.4);
+
+
+       centers=g1.selectAll("circle")
+       .data(data.centers[k_means_param - 2], d => d)
+       .enter()
+       .append("circle")
+       .style("fill", (d,i) => colors_centers[i])
+       .style("opacity", 0.75)
+       .attr('class', 'centers');
+	}
+    
+
+     circles.each(function (d) {
+                    var elem = d3.select(this);
+                    var point = map3.project(L.latLng(new L.LatLng(d[0], d[1])))._subtract(map3.getPixelOrigin());
+                    //var point = lmap.latLngToLayerPoint(new L.LatLng(d.geometry.coordinates[1], d.geometry.coordinates[0]));
+                    elem.attr('cx', point.x)
+                    elem.attr('cy', point.y)
+                    elem.attr('r', radius_cir)
+                })
+
+     centers.each(function (d) {
+                    var elem = d3.select(this);
+                    var point = map3.project(L.latLng(new L.LatLng(d[0], d[1])))._subtract(map3.getPixelOrigin());
+                    //var point = lmap.latLngToLayerPoint(new L.LatLng(d.geometry.coordinates[1], d.geometry.coordinates[0]));
+                    elem.attr('cx', point.x)
+                    elem.attr('cy', point.y)
+                    elem.attr('r', radius_cen)
+                });
+
+          const toggle = k => {
+	        k_means_param = k;
+	        g1.selectAll("circle")
+	           .data(data.data)
+	           .style("fill", d => colors[d[k_means_param]]);
+
+	           Array.from(document.querySelectorAll('circle.centers')).forEach(center => {
+	            center.remove();
+	          });
+
+           centers=g1.selectAll("circle")
+           .data(data.centers[k_means_param - 2], d => d)
+           .enter()
+           .append("circle")
+           .style("fill", (d,i) => colors_centers[i])
+           .style("opacity", 0.75)
+           .attr('class', 'centers');
+
+           centers.each(function (d) {
+                    var elem = d3.select(this);
+                    var point = map3.project(L.latLng(new L.LatLng(d[0], d[1])))._subtract(map3.getPixelOrigin());
+                    //var point = lmap.latLngToLayerPoint(new L.LatLng(d.geometry.coordinates[1], d.geometry.coordinates[0]));
+                    elem.attr('cx', point.x)
+                    elem.attr('cy', point.y)
+                    elem.attr('r', radius_cen)
+                });
+    }
+    Array.from(document.getElementsByTagName('button')).forEach(btn => {
+        btn.onclick = () => toggle(btn.dataset.val);
+    });
+
+	map3.addLayer(svgOverlay);
+
+ };
+     svgOverlay.onScaleChange = function (scaleDiff) {
+                if (scaleDiff > 0.5) {
+                    var newRadius = radius_cir * 1 / scaleDiff;
+                    var currentRadius = d3.select('circle').attr("r");
+                    if (currentRadius != newRadius) {
+                        d3.selectAll("circle").attr('r', newRadius);
+                    }
+                }
+            }
+    
+
+     svgOverlay.onScaleChange = function (scaleDiff) {
+                if (scaleDiff > 0.5) {
+                    var newRadius = radius_cen * 1 / scaleDiff;
+                    var currentRadius = d3.select('circle.centers').attr("r");
+                    if (currentRadius != newRadius) {
+                        d3.selectAll("circle.centers").attr('r', newRadius);
+                    }
+                }
+            }
+            
+
+        map3.addLayer(svgOverlay);
+
+
+
+});
+});
+
+   </script>
+</html>
+
+
