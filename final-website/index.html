@@ -142,16 +142,15 @@
                       <img class="top" src="noise_heat.png" />
                     </div>
                     
-                    <p>What is this point? Exploring the data in more detail reveals that all of the complints come from a single address in Union Turnpike that corresponds to the <a href="http://www.firedepartment.net/directory/new-york/queens-county/flushing/new-york-fire-department-engine-315-ladder-125-queens">Fire Brigade</a> in that street.</p>
+                    <p>Exploring the data in more detail reveals that all of the complints come from a single address in Union Turnpike that correspond to the <a href="http://www.firedepartment.net/directory/new-york/queens-county/flushing/new-york-fire-department-engine-315-ladder-125-queens">Fire Brigade</a> in that street.</p>
                     
                     <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1ses!2sdk!4v1493568503154!6m8!1m7!1spKOPmViUIpKDB7aVg3d8_A!2m2!1d40.72034449049819!2d-73.8078764853647!3f141.80003234336525!4f-5.680241702150838!5f0.7820865974627469" width="800" height="600" frameborder="0" style="border:0; margin-left: -30px;" allowfullscreen></iframe>
-                    </div>
-                    <p>After analyzing the surroundings of the fire brigade we observed that there are a few interesting buildings around it, such as two medical institutions. After thise, we contacted these institutions by phone trying to get some information regarding these facts. Unfortunately they couldn't provide any insights on these complaints...
+                    
+                    <p>After analyzing the surroundings of the fire brigade we observed that there are a few interesting buildings around it, such as two medical facilities. Since trying to obtain any relevant information in news, articles of supporting data regarding these complaints was quite difficult we decided to contact some of the companies and shops in the surrounding buildings by phone. Unfortunately they couldn't provide any insights on these complaints and most of them seemed unaware of them happening.</p>
+                    <p> In conclusion, we can't really know if the huge number of noise pollution complaints are based on something that actually happened, or it's just something that is wrong with the data we used. However, due to the difficulty to find any relevant news, supporting data or information when contacting the surrounding buildings we are inclined to think that it is in fact corrupt data.</p>
 
                     <h2 class="section-heading" id="predictions">Predicting new cases</h2>
                     <p>After seeing what's been going on during the past years, let's see if we can make some predictions based on the data we have. First we will take a look that 3 of the most important categories, since those are the types that have cought our attention the most. We can map future cases of these incidents based on a KN model.</p>
-                    <li>K Neighbours map with toggle for different Ks</li>
-                    
 
                     <button class='but1_neig' onclick="document.getElementById('map1').src='KNN5.png'">k=5</button>
                     <button class='but1_neig'onclick="document.getElementById('map1').src='KNN10.png'">k=10</button>
@@ -159,8 +158,6 @@
                     <img id='map1' align="left" src='KNN5.png' style="width: 900px; height: 700px; margin-top: 30px; margin-bottom: 30px; margin-left: -100px; "></img>
              
 
-                    <p>The same with K Means</p>
-                    <li>Visualization: Noise complaints clusters as calculated by K-means</li>
                      <div id='controls'>
                         <button data-val='2'>k = 2</button>
                         <button data-val='3'>k = 3</button>
@@ -168,9 +165,9 @@
                         <button data-val='5'>k = 5</button>
                         <button data-val='6'>k = 6</button>
                     </div>
-                    <div id='v_map3'></div>
+                    <div id='v_map3' style="margin-left: -150px; margin-top: 30px;"></div>
 
-                    <div id='v_map2'></div>
+                    <div id='v_map2' style="margin-left: -150px; margin-top: 30px;"></div>
 
                     <p>However, using a K Neighbours model might not be the best option in this case. Therefore, we have tried and evaluated different models and compared their scores.</p>
 
@@ -183,9 +180,7 @@
                     
                     </div>                
                     
-
-
-                   <li>Graph with evaluations of different models with various train/test ratios and number of features</li>
+                    <p>It is interesting to see that none of the model give a great accuracy even with different train/test percentages and train features. The highest one we can obtain is a 54.86% accuracy using a Decision Tree and only the street name as a train feature. this is probably due to the fact that our data isn't big or varied enought to contemplate all the different possibilities.</p>
 
                    <h3>ANYTHING ELSE?</h3>
 
