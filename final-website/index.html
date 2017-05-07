@@ -112,32 +112,38 @@
                      <p>Let's start by visualizing some of the basic stats of our data.</p>
                      <h3>Why do people complain?</h3>
                      <div id="v_types_complaints" style="width: 900px; height: 500px; margin-top: 30px; margin-bottom: 50px; margin-left: -100px; "></div>
-                     <div id="v_zones_complaints"></div>
-                     <div id="v_time_complaints"></div>
-                     <div id="v_month_complaints"></div>
+                     <p>Taking a look at some basics stats it can be easily seen that some noise types are by far more usual than others. This is the case for construction noises in its two different categories. There is also a significant amount of complaints pointing at barking dogs. The rest of the types have significantly lower occurrences. However, as it will shown later, the origin of some of these complaints like Alarms is important and can be originated from only one source.</p>
 
-                     <p>Taking a look at some basics stats...</p>
+                     <div id="v_zones_complaints" style="width: 900px; height: 500px; margin-top: 30px; margin-bottom: 50px; margin-left: -100px; "></div>
+                     <p>Regarding the number of complaints distributed by street some interesting things begin to show up. The main source is Union Turnpike, a street located in Queens. This is quite an interesting fact taking into account that most of the rest of the streets here are located in the center of Manhattan.</p>
+
+                     <div id="v_time_complaints" style="width: 900px; height: 500px; margin-top: 30px; margin-bottom: 50px; margin-left: -100px; "></div>
+                     <p>Talk about cycle when done</p>
+
+                     <div id="v_month_complaints" style="width: 900px; height: 500px; margin-top: 30px; margin-bottom: 50px; margin-left: -100px; "></div>
+                     <p>Talk about cycle when done</p>
+
+                     
                      <p>However, a lot of these numbers don't say a lot without any context. Bellow we can see with more detail the number of complaints on each zone of the city by category and month of the year.
 
                     <h3>Mapping the data</h3>
                     <label>Month for data: <span id="monthName">January</span></label><input type="range" id="monthofYear" min='1' max='12' value='1'></input><br>
                     <label>Data type: </label><select id="dataSelector"></select>
                     <div id='v_map' style="margin-left: 150px; margin-top: 50px;"></div>
+                    <p>Setting the noise type to Noise: Alarms and sliding through the months of the years it is really noticable that something is going on in a certain zone in Queens.</p>
 
                     <h3>Curious cases</h3>
-                    <p>During the exploration of the data, there some cases that cought our attention. Specially the one regarding the Alarm Noise complaints in a neighborhood called Union Turnpike. In order to find out if this was relevant or just corrupt data we decided to take a deeper look at it.</p>
+                    <p>The initial exploration showed that Alarm Noise complaints in a neighborhood called Union Turnpike seem to be specially high. In order to find out if this is relevant or just corrupt data a deeper look at it is needed.</p>
                     <h4>Union Turnpike Case</h4>
-                    <p>Union Turnpike has received an incredible amount of noise complaints during the past years; two times more than any other in the city, most of them being noisy alarm complaints.</p>
-                    <p>Insert graph here</p>
+                    <p>Union Turnpike has received an incredible amount of noise complaints during the past years; two times more than any other in the city, most of them being noisy alarm complaints. This seems weird taking into account that it looks like a quite peaceful neighborhood in Queens.</p>
+                    <p>If taken a look in the following heat map, a certain point within the zone can be noticed.</p>
      
                     <div id="cf" style="margin-left: -30px;" >
                       <img class="top" src="noise_heat.png" />
                     </div>
                     
-                
-                    <p>This seems weird taking into account that it looks like a quite peaceful neighborhood in Queens. </p>                 
-                    <p>But if we take a deeper look at the location we can see that all of those complaints come from a small fire brigade located in that street.</p>
-                    <div id="map">
+                    <p>What is this point? Exploring the data in more detail reveals that all of the complints come from a single address in Union Turnpike that corresponds to the <a href="http://www.firedepartment.net/directory/new-york/queens-county/flushing/new-york-fire-department-engine-315-ladder-125-queens">Fire Brigade</a> in that street.</p>
+                    
                     <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1ses!2sdk!4v1493568503154!6m8!1m7!1spKOPmViUIpKDB7aVg3d8_A!2m2!1d40.72034449049819!2d-73.8078764853647!3f141.80003234336525!4f-5.680241702150838!5f0.7820865974627469" width="800" height="600" frameborder="0" style="border:0; margin-left: -30px;" allowfullscreen></iframe>
                     </div>
                     <p>After analyzing the surroundings of the fire brigade we observed that there are a few interesting buildings around it, such as two medical institutions. After thise, we contacted these institutions by phone trying to get some information regarding these facts. Unfortunately they couldn't provide any insights on these complaints...
