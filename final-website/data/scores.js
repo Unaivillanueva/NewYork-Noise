@@ -22,6 +22,8 @@ var z = d3.scaleOrdinal()
     .range(["#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 
+var tooltip = d3.select('div#v_scores').append("div").attr("class","toolTip");
+
 
 d3.csv("data/scores_8020.csv", function(d, i, columns) {
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
@@ -31,9 +33,6 @@ d3.csv("data/scores_8020.csv", function(d, i, columns) {
 
   var keys = data.columns.slice(1);
   
-
-
-
   x0.domain(data.map(function(d) { return d.method; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([0, 1]);
@@ -41,8 +40,6 @@ d3.csv("data/scores_8020.csv", function(d, i, columns) {
   console.log(data);
   console.log(keys);
   
-
-
   g_scores.append("g")
     .selectAll("g")
     .data(data)
@@ -52,11 +49,22 @@ d3.csv("data/scores_8020.csv", function(d, i, columns) {
     .selectAll("rect")
     .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
     .enter().append("rect")
+      .attr("class", "bar_score")
       .attr("x", function(d) { return x1(d.key); })
       .attr("y", function(d) { return y(d.value); })
       .attr("width", x1.bandwidth())
       .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", function(d) { return z(d.key); });
+      .attr("fill", function(d) { return z(d.key); })
+      .on("mousemove", function(d){ 
+            tooltip
+                .style("left", d3.event.pageX - 400 + "px")
+                .style("top", d3.event.pageY - 550 + "px")
+                .style("display", "inline-block")
+                .html("Score: " + (d.value));
+        })
+      .on("mouseout", function(d){
+            tooltip.style("display", "none");
+        }); 
       
 
   g_scores.append("g")

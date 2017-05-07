@@ -28,3 +28,21 @@
 #button8020{
   background-color:#BDBDBD;
 }
+.toolTip {
+  position: absolute;
+  display: none;
+  min-width: 30px;
+  height: auto;
+  background: grey; /*opacity: 0.85;*/
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.bar_score:hover{
+  fill: #FF3D0D;
+}
