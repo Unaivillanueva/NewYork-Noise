@@ -1,13 +1,35 @@
 .bar {
-	fill: #6F257F;
+	fill: #ffa02b;
+	box-shadow: 0 .5px .5px rgba(0,0,0,0.15);
 }
 .axis path,
 .axis line {
   fill: none;
-  stroke: #D4D8DA;
+  stroke: black;
   stroke-width: 1px;
   shape-rendering: crispEdges;
 }
 .x path {
-	display: none;
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+.toolTip {
+position: absolute;
+  display: none;
+  min-width: 30px;
+  height: auto;
+  background: grey; /*opacity: 0.85;*/
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.bar:hover{
+	box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
