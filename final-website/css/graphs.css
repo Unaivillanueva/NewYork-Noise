@@ -33,3 +33,11 @@ position: absolute;
 .bar:hover{
 	box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
+.row-full {
+ width: 100vw;
+ position: relative;
+ margin-left: -50vw;
+ left: 50%;
+ height: 520px;
+}
