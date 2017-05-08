@@ -1,5 +1,4 @@
 
-document.getElementById('v_map3').style.width = `${w}px`;
 document.getElementById('v_map3').style.height = `${h}px`;
 
     var map3 = L.map('v_map3').setView([ 40.730610,-73.955242], 10);
