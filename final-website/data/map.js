@@ -1,4 +1,4 @@
-const w = 1000,
+const w = 1300,
       h = 700;
 const legendWidth = w * 0.6,
       legendHeight = 50;

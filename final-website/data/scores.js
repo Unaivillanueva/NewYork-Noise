@@ -57,7 +57,7 @@ d3.csv("data/scores_8020.csv", function(d, i, columns) {
       .attr("fill", function(d) { return z(d.key); })
       .on("mousemove", function(d){ 
             tooltip
-                .style("left", d3.event.pageX - 400 + "px")
+                .style("left", d3.event.pageX - 270 + "px")
                 .style("top", d3.event.pageY - 550 + "px")
                 .style("display", "inline-block")
                 .html("Score: " + (d.value));

@@ -1,4 +1,4 @@
-const w_graphs = 900,
+const w_graphs = 800,
       h_graphs = 500,
       margin_graphs = {top: 0, right: 20, bottom: 20, left: 200};
 
@@ -30,7 +30,13 @@ const svg_month = d3.select('#v_month_complaints').append('svg')
                     .style("background-color","#F1F3F3")
 const g_month = svg_month.append('g').attr("transform", `translate(${margin_graphs.left}, ${margin_graphs.top})`);
 
-
+var tip_exp = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return (d.type) + "<br>" + (d.number) + " complaints";
+  })
+svg_types.call(tip_exp);
 const displayGraph1 = (fileName, attributeAccessor, svgGroup, parentDiv, color, colorHover) => {
     d3.csv(fileName, data => {
         let tooltip = d3.select(parentDiv).append("div").attr("class","toolTip");
@@ -68,10 +74,12 @@ const displayGraph1 = (fileName, attributeAccessor, svgGroup, parentDiv, color, 
                     .style('fill', color)
 
                 tooltip
-                    .style("left", d3.event.pageX - 400 + "px")
-                    .style("top", d3.event.pageY - 550 + "px")
+                    .style("left",d3.select(this).attr("cx") + "px")
+                    .style("top",d3.select(this).attr("y") + "px")
                     .style("display", "inline-block")
                     .html((d.type) + "<br>" + (d.number) + " complaints");
+
+                tip.show
             })
             .on("mouseout", function(d){
                 d3.select(this)
@@ -80,6 +88,8 @@ const displayGraph1 = (fileName, attributeAccessor, svgGroup, parentDiv, color, 
                     .style('fill', colorHover)
 
                 tooltip.style("display", "none");
+
+                top.hide
             }); 
     })
 }
@@ -121,8 +131,8 @@ const displayGraph2 = (fileName, attributeAccessor, svgGroup, parentDiv, color, 
                     .style('fill', color)
 
                 tooltip
-                    .style("left", d3.event.pageX - 400 + "px")
-                    .style("top", d3.event.pageY - 550 + "px")
+                    .style("left",d3.select(this).attr("x")+5 + "px")
+                    .style("top",d3.select(this).attr("y") + "px")
                     .style("display", "inline-block")
                     .html((d.type) + "<br>" + (d.number) + " complaints");
             })
